@@ -4,13 +4,14 @@ import requests as req
 from  slugify import slugify
 
 import config
+import cred
 
 
 class Filelist():
     def __init__(self):
         self.url = 'https://filelist.io/api.php'
         self.con = None
-        self.credentials = config.credentials
+        self.credentials = cred.credentials
         self.params={
             'action':'latest-torrents',
             'category':'11',
@@ -22,7 +23,7 @@ class Filelist():
         self._testDestinationFolder(self.params['category'])
     def connect(self):
         headers = {
-                "Authorization": "Basic:{}".format(str(base64.b64encode(config.credentials.encode("utf-8")), 'utf-8'))
+                "Authorization": "Basic:{}".format(str(base64.b64encode(cred.credentials.encode("utf-8")), 'utf-8'))
             }
         self.con  =req.get(self.url, headers=headers, params=self.params)
         if self.con.status_code == 200:
