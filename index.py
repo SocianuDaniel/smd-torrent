@@ -13,9 +13,9 @@ class Filelist():
         self.credentials = config.credentials
         self.params={
             'action':'latest-torrents',
-            'category':'7',
+            'category':'11',
             'sort':'1',
-            'limit':'2'
+            'limit':'1'
             }
         self.rezults=None
         self.saveDir="temp"
